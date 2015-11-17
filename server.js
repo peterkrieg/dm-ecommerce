@@ -78,6 +78,10 @@ app.delete('/api/productsALL', function(req, res, next){
 })
 
 
+//_________________________Serving up front end__________________________
+
+app.use(express.static(__dirname + '/client'));
+
 
 
 

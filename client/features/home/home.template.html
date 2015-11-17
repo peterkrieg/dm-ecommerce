@@ -1,24 +1,31 @@
 <menu></menu>
 
-<h3>Find friends</h3>
-
-Get all friends: <button ng-click="getFriends()">go!</button>
-
-<ul>
-    <li ng-repeat="friend in friends">{{ friend.name }}, age {{ friend.age }} (id: {{ friend._id }})</li>
-</ul>
-
-<br>
-<br>
-
-Get one friend: <input placeholder="enter an id" type="text" ng-model="id"> <button ng-click="getFriendById(id)">get friend!</button>
-
-<ul>
-    <li>{{ friend.name || friend }}</li>
-</ul>
+<p>{{message}}</p>
 
 
-<h3>Add a new friend</h3>
-Name: <input ng-model="name" type="text">
-Age: <input ng-model="age" type="text">
-<button ng-click="postNewFriend()">add!</button> {{ flash }}
+<h1>This is practicing Full Stack MEAN</h1>
+
+
+<div class="products-container">
+	<div class="product" ng-repeat="product in products">
+		<h3>{{product.name}}</h3>
+		<li>Cost:  {{product.cost}}</li> 
+		<li>Time Created: {{(product.timeAdded | date: 'EEEE, MMMM d, h:mm a' )|| 'unknown Time'}}</li>
+		
+
+	</div>
+		
+	
+
+
+
+
+
+
+
+
+
+
+
+
+</div>

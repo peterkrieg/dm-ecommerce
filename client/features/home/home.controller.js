@@ -1,54 +1,30 @@
-var app = angular.module('app');
+angular.module('app')
+.controller('homeController', function($scope, productsService){
+
+  $scope.message = 'hellow';
 
 
-app.controller('homeController', ['$scope', 'friendService', homeController]);
+
+  var getProducts = function(){
+    productsService.getProducts()
+    .then(function(response){
+      console.log(response.data);
+
+      $scope.products = response.data;
+
+      console.log($scope.products);
+
+    })
+  }
+
+  getProducts();
+
+  
 
 
-function homeController($scope, friendService) {
-
-    $scope.getFriends = function () {
-
-        friendService.getFriends()
-            .then(function (data) {
-
-                $scope.friends = data;
-            });
-    };
 
 
-    $scope.getFriendById = function (id) {
-
-        friendService.getFriendById(id)
-            .then(function (data) {
-
-                $scope.friend = data;
-            });
-    };
 
 
-    $scope.postNewFriend = function () {
 
-        if (!$scope.name) {
-            $scope.flash = "Please enter a name!";
-        }
-
-        else if (!$scope.age || /[^0-9]/.test($scope.age)) {
-            $scope.flash = "Please enter an age (needs to be a number, dummy!)";
-        }
-
-        else {
-            var newFriend = {
-                name: $scope.name,
-                age: $scope.age
-            };
-            friendService.postNewFriend(newFriend)
-                .then(function (data) {
-
-                    $scope.flash = data;
-                });
-            $scope.name = "";
-            $scope.age = "";
-        }
-
-    };
-}
+})
