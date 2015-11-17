@@ -27,7 +27,13 @@ var products = db.collection('products');
 
 //_________________________Endpoints__________________________
 app.post('/api/products', function(req, res, next){
-	products.insert(req.body, function(err, result ){
+	var newProduct = {
+		name: req.body.name,
+		price: req.body.price,
+		timeAdded: new Date()
+	}
+
+	products.insert(newProduct, function(err, result ){
 		if(err) res.send(err);
 		else{
 			res.send(result);
@@ -45,13 +51,32 @@ app.get('/api/products', function(req, res, next){
 });
 
 app.put('/api/products', function(req, res, next){
-	products.update({"_id": mongo.ObjectId(req.query.id)}, req.body, function(err, result){
+	products.update({"_id": mongojs.ObjectId(req.query.id)}, req.body, function(err, result){
+		if(err) res.send(err);
+		else{
+			res.send(result);
+		}
+	});
+});
+
+app.delete('/api/products', function(req, res, next){
+	products.remove({"_id": mongojs.ObjectId(req.query.id)}, function(err, result){
+		if(err) res.send(err);
+		else{
+			res.send(result);
+		}
+	});
+});
+
+app.delete('/api/productsALL', function(req, res, next){
+	products.remove({}, function(err, result){
 		if(err) res.send(err);
 		else{
 			res.send(result);
 		}
 	})
 })
+
 
 
 
