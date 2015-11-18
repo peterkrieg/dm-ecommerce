@@ -6,21 +6,23 @@ angular.module('app')
 
 
   var getProducts = function(){
+    $scope.loading = true;
     productsService.getProducts()
     .then(function(response){
-      console.log(response.data);
+      $scope.loading = false;
 
       $scope.products = response.data;
-
-      console.log($scope.products);
-
     })
   }
 
   getProducts();
 
+
+
+
+
   var addProduct = function(newProduct){
-    alert('add product instantiated');
+    $scope.newProduct = {};
     productsService.addProduct(newProduct)
       .then(function(response){
         console.log(response.data);
@@ -30,6 +32,20 @@ angular.module('app')
   }
 
   $scope.addProduct = addProduct;
+
+
+  $scope.removeProduct = function(id, index){
+    console.log(index);
+    $scope.products.splice(index, 1);
+    // $
+
+    productsService.removeProduct(id)
+      .then(function(response){
+        console.log('response is', response);
+
+      });
+
+  }
 
 
 

@@ -2,6 +2,10 @@
 
 <p>{{message}}</p>
 
+<div class="loading-screen" ng-show="loading">
+	<p>Loading...</p>
+</div>
+
 
 <h1>This is practicing Full Stack MEAN</h1>
 
@@ -11,18 +15,22 @@
 		<h3>{{product.name}}</h3>
 		<li>Cost:  {{product.price}}</li> 
 		<li>Time Created: {{(product.timeAdded | date: 'EEEE, MMMM d, h:mm a' )|| 'unknown Time'}}</li>
+		<button ng-click="removeProduct(product._id, $index)">Click to Remove This Product</button>
+
+		<p>Index is: {{$index}}</p>
+
 		
 
 	</div>
 
 </div>
 
-<div class="form">
+<form ng-submit="addProduct(newProduct)">
 	<h2>Enter info about new product to add</h2>
 	<input type="text" placeholder="name" ng-model="newProduct.name">
 	<input type="text" placeholder="price" ng-model="newProduct.price">
-	<button ng-click="addProduct(newProduct)">click to Submit</button>
-</div>
+	<button type="submit">click to Submit</button>
+</form>
 
 
 

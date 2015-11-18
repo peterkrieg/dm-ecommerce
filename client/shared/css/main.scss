@@ -5,6 +5,27 @@ body{
 }
 
 
-div.form{
+form{
 	margin: 140px 0;
+}
+
+div.loading-screen{
+	position: fixed;
+	margin: 0;
+	padding: 0;
+	top: 0;
+	left: 0;
+	// position: absolute;
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,0.9);
+	p{
+		position: relative;
+		text-align: center;
+		top: 25%;
+		margin: auto;
+		font-size: 180px;
+		opacity: 1;
+		color: gold;
+	}
 }
