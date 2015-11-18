@@ -19,6 +19,7 @@
   "homepage": "https://github.com/peterkrieg/dm-ecommerce#readme",
   "dependencies": {
     "body-parser": "^1.14.1",
+    "bootstrap-sass": "^3.3.5",
     "cors": "^2.7.1",
     "express": "^4.13.3",
     "mongojs": "^1.4.1"

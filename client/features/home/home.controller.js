@@ -19,7 +19,19 @@ angular.module('app')
 
   getProducts();
 
-  
+  var addProduct = function(newProduct){
+    alert('add product instantiated');
+    productsService.addProduct(newProduct)
+      .then(function(response){
+        console.log(response.data);
+        $scope.products.push(response.data);
+        // $scope.$apply();
+      })
+  }
+
+  $scope.addProduct = addProduct;
+
+
 
 
 

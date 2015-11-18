@@ -1,12 +1,4 @@
 
-
-
-
-
-
-
-
-
 //_________________________Dependencies__________________________
 var express = require('express');
 var bodyParser = require('body-parser');
@@ -29,7 +21,7 @@ var products = db.collection('products');
 app.post('/api/products', function(req, res, next){
 	var newProduct = {
 		name: req.body.name,
-		price: req.body.price,
+		price: Number(req.body.price),
 		timeAdded: new Date()
 	}
 

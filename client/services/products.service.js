@@ -11,6 +11,13 @@ function productsService($q, $http) {
       .then(function(response){
         return response;
       })
+  };
+
+  this.addProduct = function(newProduct){
+    return $http.post('/api/products', newProduct)
+      .then(function(response){
+        return response;
+      })
   }
 
 
